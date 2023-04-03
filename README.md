@@ -56,7 +56,7 @@ else
   arquivo="offline.txt"
 fi
 
-echo "No momento $data, $mensagem" >> /mnt/efs/fs1/ec2Apache/Henrique/$arquivo
+echo "No momento $data, $mensagem" >> /mnt/efs/ec2Apache/Henrique/$arquivo
 ```
 O script verifica se o serviço apache/http esta online e dependendo da saída envia o texto para os arquivos **online.txt** e **offline.txt** que estão dentro do diretório do EFS
 
@@ -67,3 +67,5 @@ No momento 31-03-2023 17:05:02, o serviço Apache está online.
 No momento 31-03-2023 17:10:01, o serviço Apache está online.  
 No momento 31-03-2023 17:15:01, o serviço Apache está online.  
 ```
+Para executar o script de 5 em 5 minutos ocorreu o uso do crontab. Utilizando o crontab -e e adicionando a linha ao final do arquivo.  
+`*/5 * * * * root validacao.sh`
