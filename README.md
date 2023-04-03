@@ -39,7 +39,7 @@ sudo yum install httpd
 
 sudo systemctl start httpd
 ```
-### Script e monitoramente
+## Script e monitoramente
 Para efetuar o monitoramento e a validação do status do servidor Apache um script foi criado.
 
 ```shell
@@ -56,6 +56,14 @@ else
   arquivo="offline.txt"
 fi
 
-echo "No momento $data, $mensagem" >> Henrique/$arquivo
+echo "No momento $data, $mensagem" >> /mnt/efs/fs1/ec2Apache/Henrique/$arquivo
 ```
 O script verifica se o serviço apache/http esta online e dependendo da saída envia o texto para os arquivos **online.txt** e **offline.txt** que estão dentro do diretório do EFS
+
+Menssagem quando validado:
+```
+No momento 31-03-2023 17:00:02, o serviço Apache está online.  
+No momento 31-03-2023 17:05:02, o serviço Apache está online.  
+No momento 31-03-2023 17:10:01, o serviço Apache está online.  
+No momento 31-03-2023 17:15:01, o serviço Apache está online.  
+```
