@@ -11,4 +11,4 @@ else
   arquivo="offline.txt"
 fi
 
-echo "No momento $data, $mensagem" >> Henrique/$arquivo
+echo "No momento $data, $mensagem" >> /mnt/efs/ec2Apache/Henrique/$arquivo
