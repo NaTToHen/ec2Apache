@@ -39,3 +39,23 @@ sudo yum install httpd
 
 sudo systemctl start httpd
 ```
+### Script e monitoramente
+Para efetuar o monitoramento e a validação do status do servidor Apache um script foi criado.
+
+```shell
+#!/bin/bash
+
+data=$(date +"%d-%m-%Y %H:%M:%S")
+
+# Verifica
+if systemctl is-active httpd >/dev/null 2>&1; then
+  mensagem="o serviço Apache está online."
+  arquivo="online.txt"
+else
+  mensagem="o serviço Apache está offline."
+  arquivo="offline.txt"
+fi
+
+echo "No momento $data, $mensagem" >> Henrique/$arquivo
+```
+O script verifica se o serviço apache/http esta online e dependendo da saída envia o texto para os arquivos **online.txt** e **offline.txt** que estão dentro do diretório do EFS
